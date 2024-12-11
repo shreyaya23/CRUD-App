@@ -7,14 +7,23 @@ const fs = require('fs');
 const { type } = require('os');
 
 //image upload
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, './uploads'); // Ensure this path is correct
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+//     },
+// });
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads'); // Ensure this path is correct
+        cb(null, '/tmp'); // Use /tmp for writable directory
     },
     filename: function (req, file, cb) {
         cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
     },
 });
+
 
 var upload = multer({
     storage: storage,
