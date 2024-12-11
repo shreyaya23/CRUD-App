@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended : false}));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(
     session({
